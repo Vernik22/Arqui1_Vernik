@@ -1,0 +1,54 @@
+include macros.asm
+
+.model small
+.stack 64h
+.data 
+ acumulador db 0 ; es de tipo byte
+ 
+.code
+main proc
+	mov ax,@data
+	mov ds,ax
+	
+	mov ax, 50
+	mov cl,10
+	div cl
+	
+	Imprimir al
+	
+	
+		mov ax, 55
+		mov bx, ax
+		
+		xor ax, ax; se limpia el registro AX
+		mov ax, bx
+		mov dl,30
+		div dl; bx/30
+		
+		mov acumulador, al ; al es done se guarda el valor
+		
+		Imprimir acumulador
+		Imprimir ah
+		
+		;; salto de linea
+
+		mov ah,0
+		;crear etiqueta
+		inicio:
+		mov al, 64
+		Impimir al
+		inc ah
+		cmp ah,3
+		jne inicio
+		
+				
+		
+		
+	
+	mov ax, 4c00h
+	INT 21h
+	
+	
+main endp
+end main
+	
